@@ -1,28 +1,37 @@
 // Import express
 import express from "express";
 
+// Import morgan
+import morgan from "morgan";
+
 // Set the PORT as 4000
 const PORT = 4000;
 
 // Create express application(server)
 const app = express();
 
-// Create controller(middleware) and execute it
+// Create logger middleware(development: GET, path, status code, etc.)
 // Middleware is informing console website user would like to go
-const logger = (req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
+const logger = morgan("dev");
+
+// Create home website
+const home = (req, res) => {
+  return res.send("hello");
 };
 
-// Create handler and execute it
-const handleHome = (req, res) => {
-  // Send request
-  return res.send("I have the power now!");
+// Create login website
+const login = (req, res) => {
+  return res.send("login");
 };
 
+// Execute controller(middleware)
+
+app.use(logger);
 // Add route
-app.get("/", logger, handleHome);
+app.get("/", home);
+app.get("/login", login);
 
 // Server is listening port 4000
-const handleListening = () => console.log(`Sever listeing on port http://localhost:${PORT} 🚀`);
+const handleListening = () => 
+  console.log(`Sever listeing on port http://localhost:${PORT} 🚀`);
 app.listen(PORT, handleListening)
