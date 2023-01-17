@@ -1,12 +1,12 @@
 // Import express
 import express from "express";
+import {watch, edit} from "../controllers/videoController";
 
 // Declare router
 const videoRouter = express.Router();
 
-const handleWatchVideo = (req, res) => res.send("Watch Video");
-
-videoRouter.get("/watch", handleWatchVideo);
+videoRouter.get("/watch", watch);
+videoRouter.get("/edit", edit);
 
 // Export videoRouter
 export default videoRouter;
