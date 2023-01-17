@@ -4,6 +4,11 @@ import express from "express";
 // Import morgan
 import morgan from "morgan";
 
+// Import routers
+import globalRouter from "./routers/globalRouter";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+
 // Set the PORT as 4000
 const PORT = 4000;
 
@@ -14,22 +19,13 @@ const app = express();
 // Middleware is informing console website user would like to go
 const logger = morgan("dev");
 
-// Create home website
-const home = (req, res) => {
-  return res.send("hello");
-};
-
-// Create login website
-const login = (req, res) => {
-  return res.send("login");
-};
-
 // Execute controller(middleware)
-
 app.use(logger);
-// Add route
-app.get("/", home);
-app.get("/login", login);
+
+// Set router
+app.use("/", globalRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter);
 
 // Server is listening port 4000
 const handleListening = () => 
