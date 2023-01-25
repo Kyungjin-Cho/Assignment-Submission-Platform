@@ -11,12 +11,16 @@ This repository will be used for the 'Youtube App Update' utilizing HTML, CSS, J
   /search -> Search
 
 - User Router
-  /users/edit -> Edit User
-  /users/delete -> Delete User
+  /users/:id -> See User
+  /users/logout -> Log Out
+  /users/edit -> Edit My Profile
+  /users/delete -> Delete My Profile
 
 - Video Router
-  /videos/watch -> Watch Video
-  /videos/edit -> Edit Video
-  /videos/delete -> Delete Video
+  /videos/:id -> See Video(id of video)
+  /videos/:id/edit -> Edit Video
+  /videos/:id/delete -> Delete Video
+  /videos/upload -> Upload Video
+
   /videos/comments -> Comment on A Video
   /videos/comments/delete -> Delete A Comment of A Video
