@@ -29,6 +29,9 @@ app.set("views", process.cwd() + "/src/views");
 // Execute controller(middleware)
 app.use(logger);
 
+// Make express application understand transferred values of form
+app.use(express.urlencoded({extended: true}));
+
 // Set router
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
