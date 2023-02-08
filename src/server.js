@@ -1,3 +1,6 @@
+// Import database
+import "./db";
+
 // Import express
 import express from "express";
 
@@ -39,5 +42,5 @@ app.use("/users", userRouter);
 
 // Server is listening port 4000
 const handleListening = () => 
-  console.log(`Sever listeing on port http://localhost:${PORT} 🚀`);
+  console.log(`✅ Sever listeing on http://localhost:${PORT} 🚀`);
 app.listen(PORT, handleListening)
