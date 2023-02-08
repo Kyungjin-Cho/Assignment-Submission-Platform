@@ -17,7 +17,7 @@ This repository will be used for the 'Youtube App Update' utilizing HTML, CSS, J
   /users/delete -> Delete My Profile
 
 - Video Router
-  /videos/:id -> See Video(id of video)
+  /videos/:id -> Watch Video(id of video)
   /videos/:id/edit -> Edit Video
   /videos/:id/delete -> Delete Video
   /videos/upload -> Upload Video
