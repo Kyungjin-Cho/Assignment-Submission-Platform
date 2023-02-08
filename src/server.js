@@ -1,6 +1,9 @@
 // Import database
 import "./db";
 
+// Import video model
+import "./models/Video";
+
 // Import express
 import express from "express";
 
