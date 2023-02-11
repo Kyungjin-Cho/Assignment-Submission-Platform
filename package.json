@@ -7,7 +7,7 @@
     "url": "git+https://github.com/Kyungjin-Cho/Youtube-App.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "author": "Kyungjin Cho",
   "license": "ISC",

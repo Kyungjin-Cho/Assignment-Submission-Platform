@@ -1,9 +1,3 @@
-// Import database
-import "./db";
-
-// Import video model
-import "./models/Video";
-
 // Import express
 import express from "express";
 
@@ -14,11 +8,6 @@ import morgan from "morgan";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
-
-// Set the PORT as 4000
-const PORT = 4000;
-
-console.log(process.cwd());
 
 // Create express application(server)
 const app = express();
@@ -43,7 +32,4 @@ app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 
-// Server is listening port 4000
-const handleListening = () => 
-  console.log(`✅ Sever listeing on http://localhost:${PORT} 🚀`);
-app.listen(PORT, handleListening)
+export default app;
