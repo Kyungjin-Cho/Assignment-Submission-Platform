@@ -1,6 +1,6 @@
-# Youtube-App
+# Assignment Submission Platform
 
-This repository will be used for the 'Youtube App Update' utilizing HTML, CSS, JAVASCRIPT, NODEJS.
+This repository will be used for the 'Assignment-Submission-Platform' utilizing PUG, MONGODB, EXPRESS.JS, NODE.JS
 
 # Router
 
