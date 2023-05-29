@@ -6,6 +6,9 @@ import "./db";
 // Import video model
 import "./models/Video";
 
+// Import user model
+import "./models/User";
+
 // Import app
 import app from "./server";
 
