@@ -11,6 +11,7 @@ import session from "express-session";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
+import { localsMiddleware } from "./middlewares";
 
 // Create express application(server)
 const app = express();
@@ -39,21 +40,8 @@ app.use(
   })
 );
 
-// Print out the cookie
-app.use((req, res, next) => {
-  req.sessionStore.all((error, sessions) => {
-    console.log(sessions);
-    next();
-  });
-});
-
-// Create a new URL to return session ID
-app.get("/add-one", (req, res, next) => {
-  req.session.potato += 1;
-  return res.send(`${req.session.id} ${req.session.potato}`);
-});
-
 // Set router
+app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
