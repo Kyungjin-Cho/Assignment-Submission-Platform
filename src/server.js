@@ -4,6 +4,9 @@ import express from "express";
 // Import morgan
 import morgan from "morgan";
 
+// Import express-session
+import session from "express-session";
+
 // Import routers
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
@@ -26,6 +29,29 @@ app.use(logger);
 
 // Make express application understand transferred values of form
 app.use(express.urlencoded({extended: true}));
+
+// Make server to provide cookie to browser
+app.use(
+  session({
+    secret: "Hello!",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Print out the cookie
+app.use((req, res, next) => {
+  req.sessionStore.all((error, sessions) => {
+    console.log(sessions);
+    next();
+  });
+});
+
+// Create a new URL to return session ID
+app.get("/add-one", (req, res, next) => {
+  req.session.potato += 1;
+  return res.send(`${req.session.id} ${req.session.potato}`);
+});
 
 // Set router
 app.use("/", rootRouter);
