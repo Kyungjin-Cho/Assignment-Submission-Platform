@@ -7,6 +7,9 @@ import morgan from "morgan";
 // Import express-session
 import session from "express-session";
 
+// Import Mongo Store
+import MongoStore from "connect-mongo";
+
 // Import routers
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
@@ -37,6 +40,7 @@ app.use(
     secret: "Hello!",
     resave: true,
     saveUninitialized: true,
+    store: MongoStore.create({mongoUrl: "mongodb://127.0.0.1:27017/wetube"}),
   })
 );
 
