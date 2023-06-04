@@ -1,5 +1,8 @@
 // Initilize everything
 
+// Import dotenv
+import "dotenv/config";
+
 // Import database
 import "./db";
 

@@ -38,12 +38,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(
   session({
     // String of the text when we sign the cookie
-    secret: "Hello!",
+    secret: process.env.COOKIE_SECRET,
     // Save session only if there's any change
     resave: false,
     // Don't save any uninitialized session
     saveUninitialized: false,
-    store: MongoStore.create({mongoUrl: "mongodb://127.0.0.1:27017/wetube"}),
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
 
