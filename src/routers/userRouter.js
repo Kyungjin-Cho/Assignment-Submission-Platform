@@ -1,6 +1,11 @@
 // Import express
 import express from "express";
-import {remove, edit, logout, see} from "../controllers/userController";
+import {
+  edit,
+  remove,
+  logout,
+  see
+} from "../controllers/userController";
 
 // Declare router
 const userRouter = express.Router();
