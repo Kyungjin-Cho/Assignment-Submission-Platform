@@ -1,4 +1,3 @@
-// Import express
 import express from "express";
 import {
   edit,
@@ -8,14 +7,12 @@ import {
   finishGithubLogin,
 } from "../controllers/userController";
 
-// Declare router
 const userRouter = express.Router();
 
 userRouter.get("/logout", logout);
 userRouter.get("/edit", edit);
 userRouter.get("/github/start", startGithubLogin);
 userRouter.get("/github/finish", finishGithubLogin);
-userRouter.get("/:id", see);
+userRouter.get(":id", see);
 
-// Export userRouter
 export default userRouter;

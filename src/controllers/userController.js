@@ -1,6 +1,6 @@
-import bcrypt from "bcrypt";
-import fetch from "node-fetch";
 import User from "../models/User";
+import fetch from "node-fetch";
+import bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
@@ -40,7 +40,6 @@ export const getLogin = (req, res) =>
 
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
-  // check if account exists
   const pageTitle = "Login";
   const user = await User.findOne({ username, socialOnly: false });
   if (!user) {
@@ -49,7 +48,6 @@ export const postLogin = async (req, res) => {
       errorMessage: "An account with this username does not exists.",
     });
   }
-  // check if password correct
   const ok = await bcrypt.compare(password, user.password);
   if (!ok) {
     return res.status(400).render("login", {
@@ -57,7 +55,6 @@ export const postLogin = async (req, res) => {
       errorMessage: "Wrong password",
     });
   }
-  // add information to the session
   req.session.loggedIn = true;
   req.session.user = user;
   return res.redirect("/");
@@ -139,6 +136,5 @@ export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
-
 export const edit = (req, res) => res.send("Edit User");
 export const see = (req, res) => res.send("See User");

@@ -17,6 +17,7 @@ import videoRouter from "./routers/videoRouter";
 import { localsMiddleware } from "./middlewares";
 
 // Create express application(server)
+// const express = require('express');
 const app = express();
 
 // Create logger middleware(development: GET, path, status code, etc.)
@@ -47,10 +48,18 @@ app.use(
   })
 );
 
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl.includes('favicon.ico')) {
+    res.status(204).end()
+  }
+  next();
+}
+
 // Set router
 app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
+app.use(ignoreFavicon);
 
 export default app;
