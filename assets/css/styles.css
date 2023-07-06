@@ -305,6 +305,9 @@ input[type=submit],
 }
 .profile__data img {
   margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 .profile__data h3 {
   font-size: 18px;
