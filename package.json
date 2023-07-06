@@ -7,8 +7,8 @@
     "url": "git+https://github.com/Kyungjin-Cho/Youtube-App.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js",
-    "assets": "webpack --config webpack.config.cjs"
+    "dev:server": "nodemon",
+    "dev:assets": "webpack"
   },
   "author": "Kyungjin Cho",
   "license": "ISC",
