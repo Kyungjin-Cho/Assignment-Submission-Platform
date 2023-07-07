@@ -36,6 +36,13 @@ app.use(logger);
 // Make express application understand transferred values of form
 app.use(express.urlencoded({extended: true}));
 
+// Accept policy for downloding videos
+app.use((req, res, next) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
+
 // Make server to provide cookie to browser
 app.use(
   session({
@@ -65,5 +72,6 @@ app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 app.use("/api", apiRouter);
 app.use(ignoreFavicon);
+
 
 export default app;
