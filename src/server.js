@@ -7,6 +7,9 @@ import morgan from "morgan";
 // Import express-session
 import session from "express-session";
 
+// Import express-flash
+import flash from "express-flash";
+
 // Import Mongo Store
 import MongoStore from "connect-mongo";
 
@@ -56,12 +59,16 @@ app.use(
   })
 );
 
+app.use(flash());
+
 function ignoreFavicon(req, res, next) {
   if (req.originalUrl.includes('favicon.ico')) {
     res.status(204).end()
   }
   next();
 }
+
+
 
 // Set router
 app.use(localsMiddleware);
