@@ -39,6 +39,9 @@ app.use(logger);
 // Make express application understand transferred values of form
 app.use(express.urlencoded({extended: true}));
 
+// JSON.stringify data received through fetch
+app.use(express.json());
+
 // Accept policy for downloding videos
 app.use((req, res, next) => {
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
