@@ -12,6 +12,9 @@ import "./models/Video";
 // Import user model
 import "./models/User";
 
+// Import comment model
+import "./models/Comment";
+
 // Import app
 import app from "./server";
 
