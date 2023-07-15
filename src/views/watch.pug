@@ -40,8 +40,8 @@ block content
                 li.video__comment(data-id=comment.id)
                     i.fas.fa-comment
                     span  #{comment.text}
-                    span ❌
+                    span.video__delete ❌
 block scripts
     script(src="/static/js/videoPlayer.js")
     if loggedIn
-        script(src="/static/js/commentSection.js") 
+        script(src="/static/js/commentSection.js")
