@@ -172,6 +172,9 @@ header .header__avatar {
   height: 40px;
   border-radius: 50%;
 }
+header .header__temp {
+  font-size: 35px;
+}
 
 footer {
   text-align: center;
@@ -380,6 +383,9 @@ input[type=submit]:disabled,
 }
 .profile__data h3 {
   font-size: 18px;
+}
+.profile__data .header__temp {
+  font-size: 200px;
 }
 
 form label {
