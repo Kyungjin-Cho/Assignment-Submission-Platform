@@ -1,3 +1,4 @@
+import path from 'path';
 import Community from '../models/Community';
 import User from '../models/User';
 
@@ -18,22 +19,29 @@ export const getCommunity = async (req, res) => {
 };
 
 export const postCommunity = async (req, res) => {
-  const { name } = req.body;
+  const { name, topic } = req.body;
+  const file = req.file ? path.join('/uploads/communityProfilePictures', req.file.filename) : undefined;
   const {
     user: { _id },
   } = req.session;
   try {
-    const community = await Community.create({ 
+    const newCommunity = await Community.create({ 
       name, 
+      topic,
+      profilePicture: file,
       owner: _id,
       members: [_id]
     });
-    res.redirect(`/community/${community._id}`);
+
+    const communities = await Community.find({}).populate('owner');
+    
+    res.render('communities', { communities });
   } catch (error) {
     console.log(error);
     res.status(400).render('createCommunity', { errorMessage: error._message });
   }
 };
+
 
 export const joinCommunity = async (req, res) => {
   const { id } = req.params;

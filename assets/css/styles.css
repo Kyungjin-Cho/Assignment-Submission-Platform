@@ -530,6 +530,45 @@ form label {
     margin-bottom: 10px;
   }
 }
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container .create-community {
+  flex: 1;
+  margin-right: 20px;
+}
+.container .communities {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.container .community {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .community img {
+  max-width: 100%;
+  height: auto;
+}
+.container .community h2, .container .community p {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .create-community {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .container .communities {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -1,9 +1,23 @@
 extends base
 
 block content
-    h1 Communities
-    each community in communities
-        div
-            h2= community.name
-            a(href=`/community/${community._id}`) View Community
-
+    div.container
+        form.create-community(method="POST", action="/community", enctype="multipart/form-data")
+            label(for="name") Community Name
+            input(type="text", id="name", name="name", placeholder="New Community Name")
+            label(for="topic") Community Topic
+            input(type="text", id="topic", name="topic", placeholder="Community Topic")
+            label(for="profilePicture") Profile Picture
+            input(type="file", id="profilePicture", name="profilePicture")
+            button(type="submit") Create Community
+        div.communities
+            each community in communities
+                div.community
+                    h2= community.name
+                    p= community.topic
+                    p= community.members.length + (community.members.length > 1 ? ' members' : ' member')
+                    p= 'Owner: ' + community.owner.name
+                    img(src=`/uploads/${community.profilePicture}`, alt=community.name)
+                    a(href=`/community/${community._id}`) View Community
+                    form(method="POST", action=`/community/${community._id}/join`)
+                        button(type="submit") Join
