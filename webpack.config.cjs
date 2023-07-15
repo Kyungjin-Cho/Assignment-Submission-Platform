@@ -9,7 +9,8 @@ module.exports = {
     videoPlayer: BASE_JS + "videoPlayer.js",
     recorder: BASE_JS + "recorder.js",
     commentSection: BASE_JS + "commentSection.js",
-    confirmDelete: BASE_JS + "confirmDelete.js"
+    confirmDelete: BASE_JS + "confirmDelete.js",
+    uploadNote: BASE_JS + "uploadNote.js"
   },
   mode: "development",
   watch: true,
