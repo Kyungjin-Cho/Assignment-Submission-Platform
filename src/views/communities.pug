@@ -1,0 +1,9 @@
+extends base
+
+block content
+    h1 Communities
+    each community in communities
+        div
+            h2= community.name
+            a(href=`/community/${community._id}`) View Community
+
