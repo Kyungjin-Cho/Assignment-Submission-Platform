@@ -431,6 +431,34 @@ form label {
   text-decoration: underline;
 }
 
+.video__add-comments {
+  margin-top: 20px;
+}
+.video__add-comments form.video__comment-form {
+  display: flex;
+  flex-direction: column;
+}
+.video__add-comments form.video__comment-form textarea {
+  resize: vertical;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.video__add-comments form.video__comment-form button {
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.video__add-comments form.video__comment-form button:hover {
+  background-color: darkblue;
+}
+
 .video__comments {
   display: flex;
   flex-direction: column;
@@ -439,12 +467,24 @@ form label {
   margin: 0 auto;
   margin-top: 20px;
 }
-.video__comments .video__comment {
+.video__comments ul {
+  padding: 0;
+}
+.video__comments ul .video__comment {
+  display: flex;
+  align-items: center;
   padding: 10px;
-  border-radius: 9999px;
-  background-color: white;
-  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 10px;
+}
+.video__comments ul .video__comment i {
+  margin-right: 10px;
+}
+.video__comments ul .video__comment .video__delete {
+  margin-left: auto;
+  color: red;
+  cursor: pointer;
 }
 
 a {
