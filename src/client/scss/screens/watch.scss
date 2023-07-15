@@ -17,60 +17,98 @@
       text-decoration: underline;
     }
   }
+  .video__edit {
+    width: 150px;
+    &:hover {
+      text-transform: uppercase;
+      font-weight: bolder;
+    }
+  }
+  .video__delete {
+    width: 150px;
+    &:hover {
+      text-transform: uppercase;
+      font-weight: bolder;
+    }
+  }
 }
 
 .video__add-comments {
   margin-top: 20px;
   form.video__comment-form {
+    border: none;
     display: flex;
-    flex-direction: column;
+    max-width: 100%; 
     textarea {
+      font-family: 'Indie Flower', cursive;
+      flex: 1;
       resize: vertical;
-      margin-bottom: 10px;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      margin-right: 20px;
+      border: none;
+      border-bottom: 1px solid #ccc;
       font-size: 14px;
+      background-color: transparent;
+      color: white;
+      &:focus {
+        border: none;
+        background-color: transparent;
+        color: cornflowerblue;
+      }
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     button {
-      background-color: cornflowerblue;
+      font-family: 'Indie Flower', cursive;
       color: white;
       border: none;
+      border-bottom: 2px solid cornflowerblue;
+      background-color: transparent;
       padding: 10px;
-      border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       &:hover {
-        background-color: darkblue;
+        border-bottom: 5px solid royalblue;
+        text-transform: uppercase;
+        font-weight: bolder;
+        color: skyblue;
       }
     }
   }
 }
 
 .video__comments {
-  display: flex;
-  flex-direction: column;
-  max-width: 320px;
-  width: 100%;
-  margin: 0 auto;
   margin-top: 20px;
   ul {
+    width: 100%;
     padding: 0;
     .video__comment {
       display: flex;
       align-items: center;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border-bottom: 1px solid #ccc;
       margin-bottom: 10px;
       i {
         margin-right: 10px;
       }
-      .video__delete {
+      .comment__delete {
         margin-left: auto;
-        color: red;
+        color: indianred;
+        font-size: 20PX;
         cursor: pointer;
+        &:hover {
+          color: red;
+          font-size: 25px;
+          }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .video__add-comments form.video__comment-form {
+    flex-direction: column;
+    textarea {
+      margin-bottom: 10px;
     }
   }
 }
