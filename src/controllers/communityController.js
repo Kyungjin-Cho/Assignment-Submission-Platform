@@ -5,7 +5,7 @@ import User from '../models/User';
 export const getCommunities = async (req, res) => {
   try {
       const communities = await Community.find({}).populate('owner');
-      return res.render('communities', { communities });
+      return res.render('communities', { communities, userId: req.session.user?._id });
   } catch (error) {
       console.log(error);
       res.status(400).render('errorPage', { errorMessage: error.message });
@@ -15,12 +15,12 @@ export const getCommunities = async (req, res) => {
 export const getCommunity = async (req, res) => {
   const { id } = req.params;
   const community = await Community.findById(id).populate('owner').populate('members').populate('posts.postedBy');
-  return res.render('community', { community });
+  return res.render('community', { community, userId: req.session.user?._id });
 };
 
+
 export const postCommunity = async (req, res) => {
-  const { name, topic } = req.body;
-  const file = req.file ? path.join('/uploads/communityProfilePictures', req.file.filename) : undefined;
+  const { name, topic, description } = req.body;
   const {
     user: { _id },
   } = req.session;
@@ -28,20 +28,23 @@ export const postCommunity = async (req, res) => {
     const newCommunity = await Community.create({ 
       name, 
       topic,
-      profilePicture: file,
+      description,
       owner: _id,
       members: [_id]
     });
-
-    const communities = await Community.find({}).populate('owner');
     
-    res.render('communities', { communities });
+    const user = await User.findById(_id);
+    user.communities.push(newCommunity._id);
+    user.save();
+    
+    const communities = await Community.find({}).populate('owner');
+    return res.render('community', { communities });
   } catch (error) {
     console.log(error);
-    res.status(400).render('createCommunity', { errorMessage: error._message });
+    req.flash('error', error._message);
+    return res.redirect('/community');
   }
 };
-
 
 export const joinCommunity = async (req, res) => {
   const { id } = req.params;

@@ -1,23 +1,22 @@
 extends base
+include mixins/community
 
 block content
     div.container
-        form.create-community(method="POST", action="/community", enctype="multipart/form-data")
+        form.create-community(method="POST", action="/community")
             label(for="name") Community Name
             input(type="text", id="name", name="name", placeholder="New Community Name")
+            label(for="description") Community Description
+            textarea(id="description", name="description", placeholder="Describe your community")
             label(for="topic") Community Topic
-            input(type="text", id="topic", name="topic", placeholder="Community Topic")
-            label(for="profilePicture") Profile Picture
-            input(type="file", id="profilePicture", name="profilePicture")
+            select(id="topic", name="topic")
+                option(value="coding") Coding
+                option(value="cybersecurity") Cyber Security
+                option(value="dataanalysis") Data Analysis
+                option(value="ai") AI
+                option(value="theory") Theory
+                option(value="etc") ETC
             button(type="submit") Create Community
         div.communities
-            each community in communities
-                div.community
-                    h2= community.name
-                    p= community.topic
-                    p= community.members.length + (community.members.length > 1 ? ' members' : ' member')
-                    p= 'Owner: ' + community.owner.name
-                    img(src=`/uploads/${community.profilePicture}`, alt=community.name)
-                    a(href=`/community/${community._id}`) View Community
-                    form(method="POST", action=`/community/${community._id}/join`)
-                        button(type="submit") Join
+            each comm in communities
+                +community(comm)

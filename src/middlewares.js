@@ -39,11 +39,4 @@ export const videoUpload = multer({
   },
 });
 
-export const communityProfileUpload = multer({ // new
-  dest: "uploads/communityProfiles/",
-  limits: {
-    fileSize: 5000000, // limit filesize for community profile pictures, change as per your requirement
-  },
-});
-
 

@@ -1,0 +1,28 @@
+mixin community(community)
+  div.community
+    div.icon
+      if community.topic === "coding"
+        i(class="fas fa-laptop-code")
+      else if community.topic === "cybersecurity"
+        i(class="fas fa-shield-virus")
+      else if community.topic === "dataanalysis"
+        i(class="fas fa-chart-bar")
+      else if community.topic === "ai"
+        i(class="fas fa-robot")  
+      else if community.topic === "theory"
+        i(class="fas fa-book")  
+      else if community.topic === "etc"
+        i(class="fas fa-question-circle")
+      div.button-area
+        if userId && community.members.map(String).includes(String(userId))
+          a(href=`/community/${community._id}`) View
+        else
+          a(href=`/community/${community._id}`/join) Join
+    div.details
+      h2= 'Name: ' + community.name
+      p.topic= 'Topic: ' + community.topic
+      p.owner= 'Owner: ' + community.owner.name
+      p.members= 'Members: ' + community.members.length + (community.members.length > 1 ? ' members' : ' member')
+      p.description 
+        strong Desc:
+        | #{community.description}
