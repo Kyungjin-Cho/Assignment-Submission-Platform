@@ -19,10 +19,11 @@ mixin community(community)
         else
           a(href=`/community/${community._id}`/join) Join
     div.details
-      h2= 'Name: ' + community.name
+      h2= community.name
       p.topic= 'Topic: ' + community.topic
       p.owner= 'Owner: ' + community.owner.name
       p.members= 'Members: ' + community.members.length + (community.members.length > 1 ? ' members' : ' member')
       p.description 
-        strong Desc:
+        strong Desc: 
+        br
         | #{community.description}

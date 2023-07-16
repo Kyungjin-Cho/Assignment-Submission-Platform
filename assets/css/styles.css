@@ -643,7 +643,9 @@ form label {
   }
   .container .create-community {
     margin-right: 0;
+    margin-left: 0;
     margin-bottom: 20px;
+    width: 90%;
   }
   .container .communities {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
