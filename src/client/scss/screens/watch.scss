@@ -1,104 +1,118 @@
-.video__data {
-  margin-top: 20px;
+#watch-container {
   display: flex;
-  flex-direction: column;
-  .video__title {
-    font-size: 26px;
-    margin-bottom: 5px;
-  }
-  .video__createdAt {
-    font-size: 12px;
-  }
-  .video__owner {
-    margin-bottom: 5px;
-    font-size: 14px;
-    a {
-      color: cornflowerblue;
-      text-decoration: underline;
-    }
-  }
-  .video__edit {
-    width: 150px;
-    &:hover {
-      text-transform: uppercase;
-      font-weight: bolder;
-    }
-  }
-  .video__delete {
-    width: 150px;
-    &:hover {
-      text-transform: uppercase;
-      font-weight: bolder;
-    }
-  }
+  justify-content: space-between;
 }
 
-.video__add-comments {
-  margin-top: 20px;
-  form.video__comment-form {
-    border: none;
+
+#left-watch {
+  flex: 2;
+  .video__data {
+    margin-top: 20px;
     display: flex;
-    max-width: 100%; 
-    textarea {
-      font-family: 'Indie Flower', cursive;
-      flex: 1;
-      resize: vertical;
-      padding: 10px;
-      margin-right: 20px;
-      border: none;
-      border-bottom: 1px solid #ccc;
-      font-size: 14px;
-      background-color: transparent;
-      color: white;
-      &:focus {
-        border: none;
-        background-color: transparent;
-        color: cornflowerblue;
-      }
-      transition: background-color 0.3s ease, color 0.3s ease;
+    flex-direction: column;
+    .video__title {
+      font-size: 26px;
+      margin-bottom: 5px;
     }
-    button {
+    .video__createdAt {
+      font-size: 12px;
       font-family: 'Indie Flower', cursive;
-      color: white;
-      border: none;
-      border-bottom: 2px solid cornflowerblue;
-      background-color: transparent;
-      padding: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    }
+    .video__owner {
+      margin-bottom: 5px;
+      font-size: 14px;
+      a {
+        color: cornflowerblue;
+        text-decoration: underline;
+      }
+    }
+    .video__edit {
+      width: 150px;
       &:hover {
-        border-bottom: 5px solid royalblue;
         text-transform: uppercase;
         font-weight: bolder;
-        color: skyblue;
+      }
+    }
+    .video__delete {
+      width: 150px;
+      &:hover {
+        text-transform: uppercase;
+        font-weight: bolder;
+      }
+    }
+  }  
+}
+
+#right-watch {
+  flex: 1;
+  margin-left: 20px;
+  .video__add-comments {
+    margin-top: 20px;
+    form.video__comment-form {
+      border: none;
+      display: flex;
+      max-width: 100%; 
+      textarea {
+        font-family: 'Indie Flower', cursive;
+        flex: 1;
+        resize: vertical;
+        padding: 10px;
+        margin-right: 20px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        font-size: 14px;
+        background-color: transparent;
+        color: white;
+        &:focus {
+          border: none;
+          background-color: transparent;
+          color: cornflowerblue;
+        }
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      button {
+        font-family: 'Indie Flower', cursive;
+        color: white;
+        border: none;
+        border-bottom: 2px solid cornflowerblue;
+        background-color: transparent;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          border-bottom: 5px solid royalblue;
+          text-transform: uppercase;
+          font-weight: bolder;
+          color: skyblue;
+        }
       }
     }
   }
-}
 
-.video__comments {
-  margin-top: 20px;
-  ul {
-    width: 100%;
-    padding: 0;
-    .video__comment {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 10px;
-      i {
-        margin-right: 10px;
-      }
-      .comment__delete {
-        margin-left: auto;
-        color: indianred;
-        font-size: 20PX;
-        cursor: pointer;
-        &:hover {
-          color: red;
-          font-size: 25px;
-          }
+  .video__comments {
+    margin-top: 20px;
+    ul {
+      width: 100%;
+      padding: 0;
+      .video__comment {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+        i {
+          margin-right: 10px;
+        }
+        .comment__delete {
+          margin-left: auto;
+          color: indianred;
+          font-size: 20PX;
+          cursor: pointer;
+          &:hover {
+            color: red;
+            font-size: 25px;
+            }
+        }
       }
     }
   }
@@ -110,5 +124,15 @@
     textarea {
       margin-bottom: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  #watch-container {
+    flex-direction: column;
+  }
+
+  #left-watch, #right-watch {
+    flex: 1; // Takes up full space on small screens
   }
 }

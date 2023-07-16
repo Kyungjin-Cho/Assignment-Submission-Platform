@@ -416,50 +416,63 @@ form label {
   margin-bottom: 10px;
 }
 
-.video__data {
+#watch-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#left-watch {
+  flex: 2;
+}
+#left-watch .video__data {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
-.video__data .video__title {
+#left-watch .video__data .video__title {
   font-size: 26px;
   margin-bottom: 5px;
 }
-.video__data .video__createdAt {
+#left-watch .video__data .video__createdAt {
   font-size: 12px;
+  font-family: "Indie Flower", cursive;
 }
-.video__data .video__owner {
+#left-watch .video__data .video__owner {
   margin-bottom: 5px;
   font-size: 14px;
 }
-.video__data .video__owner a {
+#left-watch .video__data .video__owner a {
   color: cornflowerblue;
   text-decoration: underline;
 }
-.video__data .video__edit {
+#left-watch .video__data .video__edit {
   width: 150px;
 }
-.video__data .video__edit:hover {
+#left-watch .video__data .video__edit:hover {
   text-transform: uppercase;
   font-weight: bolder;
 }
-.video__data .video__delete {
+#left-watch .video__data .video__delete {
   width: 150px;
 }
-.video__data .video__delete:hover {
+#left-watch .video__data .video__delete:hover {
   text-transform: uppercase;
   font-weight: bolder;
 }
 
-.video__add-comments {
+#right-watch {
+  flex: 1;
+  margin-left: 20px;
+}
+#right-watch .video__add-comments {
   margin-top: 20px;
 }
-.video__add-comments form.video__comment-form {
+#right-watch .video__add-comments form.video__comment-form {
   border: none;
   display: flex;
   max-width: 100%;
 }
-.video__add-comments form.video__comment-form textarea {
+#right-watch .video__add-comments form.video__comment-form textarea {
   font-family: "Indie Flower", cursive;
   flex: 1;
   resize: vertical;
@@ -472,12 +485,12 @@ form label {
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.video__add-comments form.video__comment-form textarea:focus {
+#right-watch .video__add-comments form.video__comment-form textarea:focus {
   border: none;
   background-color: transparent;
   color: cornflowerblue;
 }
-.video__add-comments form.video__comment-form button {
+#right-watch .video__add-comments form.video__comment-form button {
   font-family: "Indie Flower", cursive;
   color: white;
   border: none;
@@ -487,37 +500,36 @@ form label {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.video__add-comments form.video__comment-form button:hover {
+#right-watch .video__add-comments form.video__comment-form button:hover {
   border-bottom: 5px solid royalblue;
   text-transform: uppercase;
   font-weight: bolder;
   color: skyblue;
 }
-
-.video__comments {
+#right-watch .video__comments {
   margin-top: 20px;
 }
-.video__comments ul {
+#right-watch .video__comments ul {
   width: 100%;
   padding: 0;
 }
-.video__comments ul .video__comment {
+#right-watch .video__comments ul .video__comment {
   display: flex;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
-.video__comments ul .video__comment i {
+#right-watch .video__comments ul .video__comment i {
   margin-right: 10px;
 }
-.video__comments ul .video__comment .comment__delete {
+#right-watch .video__comments ul .video__comment .comment__delete {
   margin-left: auto;
   color: indianred;
   font-size: 20PX;
   cursor: pointer;
 }
-.video__comments ul .video__comment .comment__delete:hover {
+#right-watch .video__comments ul .video__comment .comment__delete:hover {
   color: red;
   font-size: 25px;
 }
@@ -528,6 +540,14 @@ form label {
   }
   .video__add-comments form.video__comment-form textarea {
     margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 720px) {
+  #watch-container {
+    flex-direction: column;
+  }
+  #left-watch, #right-watch {
+    flex: 1;
   }
 }
 .container {
