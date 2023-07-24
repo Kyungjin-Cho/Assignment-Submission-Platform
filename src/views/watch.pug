@@ -32,6 +32,7 @@ block content
                     br
                     a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
             div#note-editor
+                if String(video.owner._id) === String(loggedInUser._id)
         div#right-watch            
             if loggedIn
                 div.video__add-comments
@@ -45,8 +46,10 @@ block content
                             i.fas.fa-comment
                             span  #{comment.text}
                             span.comment__delete.delete-comment X
+
 block scripts
     script(src="/static/js/videoPlayer.js")
+    script(src="https://cdn.quilljs.com/1.3.6/quill.js")
     if loggedIn
         script(src="/static/js/commentSection.js")
     script(src="/static/js/confirmDelete.js")
