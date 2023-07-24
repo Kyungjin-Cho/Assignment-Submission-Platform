@@ -163,7 +163,6 @@ export const deleteComment = async (req, res) => {
   if (!comment) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
-  console.log(comment);
   if (String(comment.owner._id) !== String(_id)) {
     req.flash("error", "You are not the owner of video.");
     return res.status(403).redirect("/");
