@@ -15,3 +15,14 @@ export const postAddNote = async (req, res) => {
         return res.status(400).send(error);
     }
 };
+
+export const deleteNote = async (req, res) => {
+  const { id } = req.params;
+  try {
+      await Note.findByIdAndDelete(id);
+      return res.status(200).json({ message: "Note deleted successfully" });
+  } catch (error) {
+      console.log(error);
+      return res.status(400).send(error);
+  }
+};

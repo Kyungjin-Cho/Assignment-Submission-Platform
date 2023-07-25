@@ -32,9 +32,9 @@ block content
                     br
                     a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
             div#note-editor(data-id=video._id)
-                div#quill-editor
-                button#note-submit Submit Note
+                    div#quill-editor
                     if String(video.owner._id) === String(loggedInUser._id)
+                        button#note-submit Submit Note
         div#right-watch            
             if loggedIn
                 div.video__add-comments
