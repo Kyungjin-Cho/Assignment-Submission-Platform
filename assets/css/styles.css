@@ -520,8 +520,8 @@ form label {
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
-#right-watch .video__comments ul .video__comment i {
-  margin-right: 10px;
+#right-watch .video__comments ul .video__comment a {
+  margin-right: 5px;
 }
 #right-watch .video__comments ul .video__comment .comment__delete {
   margin-left: auto;
@@ -532,6 +532,14 @@ form label {
 #right-watch .video__comments ul .video__comment .comment__delete:hover {
   color: red;
   font-size: 25px;
+}
+#right-watch .video__comments ul .video__comment .comment__username {
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
+#right-watch .video__comments ul .video__comment .comment__username:hover {
+  color: cornflowerblue;
 }
 
 @media screen and (max-width: 480px) {
