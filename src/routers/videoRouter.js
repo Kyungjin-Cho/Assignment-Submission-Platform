@@ -7,6 +7,9 @@ import {
   postEdit,
   postUpload,
   deleteVideo,
+  registerView,
+  createComment,
+  deleteComment
 } from "../controllers/videoController";
 import { protectorMiddleware, videoUpload } from "../middlewares";
 
@@ -28,6 +31,10 @@ videoRouter
   .all(protectorMiddleware)
   .get(getUpload)
   .post(videoUpload.fields([{ name: "video" }, { name: "thumb" }]), postUpload);
+
+videoRouter.post("/:id([0-9a-f]{24})/views", registerView);
+videoRouter.post("/:id([0-9a-f]{24})/comment", protectorMiddleware, createComment);
+videoRouter.delete("/comments/:id([0-9a-f]{24})/delete", protectorMiddleware, deleteComment);
 
 // Export videoRouter
 export default videoRouter;

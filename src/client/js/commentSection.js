@@ -26,7 +26,7 @@ const addComment = (text, id, owner) => {
   const a = document.createElement("a");
   a.href = `/users/${owner._id}`;
   a.innerText = `${owner.name}:`;
-  a.style.fontWeight = "border";
+  a.style.fontWeight = "bolder";
   a.style.color = "white";
   
   const span = document.createElement("span");
