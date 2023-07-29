@@ -19,6 +19,7 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import apiRouter from "./routers/apiRouter";
 import communityRouter from "./routers/communityRouter";
+import noteRouter from "./routers/noteRouter";
 import { localsMiddleware } from "./middlewares";
 
 // Create express application(server)
@@ -83,6 +84,7 @@ app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 app.use("/api", apiRouter);
 app.use("/community", communityRouter);
+app.use("/notes", noteRouter);
 app.use(ignoreFavicon);
 
 

@@ -31,10 +31,16 @@ block content
                     a.video__edit(href=`${video.id}/edit`) Edit Video &rarr;
                     br
                     a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
-            if video.noteFileUrl
-                div#note-preview
-                    img(src="/" + video.noteFileUrl, alt="Note Preview")
-                    a(href="/videos/" + video._id + "/download-note", download) Download Note
+                    br
+                    div.note-upload
+                        form(action=`/notes/${video._id}/upload`, method="post", enctype="multipart/form-data")
+                            input(type="file", name="note")
+                            input(type="text", name="description", placeholder="Brief description about the note...")
+                            button(type="submit") Upload Note
+                if video.note
+                    div.note-download
+                        a(href=`/notes/${video.note._id}/download`) Download Note
+                        p.note-description=video.note.description
         div#right-watch            
             if loggedIn
                 div.video__add-comments

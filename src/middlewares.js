@@ -39,4 +39,11 @@ export const videoUpload = multer({
   },
 });
 
+export const noteUpload = multer({
+  dest: "uploads/notes/",
+  limits: {
+    fileSize: 5000000,
+  },
+});
+
 
