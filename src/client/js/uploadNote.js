@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   const noteEditor = document.querySelector('#quill-editor');
-  const noteSubmitBtn = document.querySelector('#note-submit');
+  const noteWriteBtn = document.querySelector('#note-write');
 
-  if (noteSubmitBtn) { // only add the event listener if the Submit Note button exists
+  if (noteWriteBtn) { // only add the event listener if the Write Note button exists
+    // Initially hide Quill editor
+    noteEditor.style.display = 'none';
+
+    // Show Quill editor when Write Note button is clicked
+    noteWriteBtn.addEventListener('click', function() {
+      noteEditor.style.display = 'block';
+      noteWriteBtn.style.display = 'none';
+    });
+
     // Initialize Quill
     quill = new Quill('#quill-editor', { theme: 'snow' });
 
