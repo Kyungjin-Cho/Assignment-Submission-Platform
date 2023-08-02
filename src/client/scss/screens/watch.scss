@@ -27,6 +27,7 @@
       }
     }
     .video__edit {
+      color: wheat;
       width: 150px;
       &:hover {
         text-transform: uppercase;
@@ -34,6 +35,7 @@
       }
     }
     .video__delete {
+      color: wheat;
       width: 150px;
       &:hover {
         text-transform: uppercase;
@@ -44,21 +46,12 @@
   .note-download {
     margin-top: 10px;
   
-    .note-title {
-      font-size: 18px;
-      font-weight: bold;
-    }
-  
-    .note-description {
-      font-size: 14px;
-      color: grey;
-    }
-  
     a {
-      color: cornflowerblue;
-      text-decoration: underline;
+      width: 150px;
+      color: wheat;
       &:hover {
-        color: royalblue;
+        text-transform: uppercase;
+        font-weight: bolder;
       }
     }
   }  

@@ -446,6 +446,7 @@ form label {
   text-decoration: underline;
 }
 #left-watch .video__data .video__edit {
+  color: wheat;
   width: 150px;
 }
 #left-watch .video__data .video__edit:hover {
@@ -453,6 +454,7 @@ form label {
   font-weight: bolder;
 }
 #left-watch .video__data .video__delete {
+  color: wheat;
   width: 150px;
 }
 #left-watch .video__data .video__delete:hover {
@@ -462,20 +464,13 @@ form label {
 #left-watch .note-download {
   margin-top: 10px;
 }
-#left-watch .note-download .note-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-#left-watch .note-download .note-description {
-  font-size: 14px;
-  color: grey;
-}
 #left-watch .note-download a {
-  color: cornflowerblue;
-  text-decoration: underline;
+  width: 150px;
+  color: wheat;
 }
 #left-watch .note-download a:hover {
-  color: royalblue;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
 
 #right-watch {

@@ -48,21 +48,9 @@ const noteStorage = multer.diskStorage({
     cb(null, `${basename}-${Date.now()}${ext}`);
   },
 });
-
-const noteFileFilter = (req, file, cb) => {
-  // Allow only PDF and TXT
-  if (file.mimetype === 'application/pdf' || file.mimetype === 'text/plain') {
-    cb(null, true); // Accept the file
-  } else {
-    cb(null, false); // Reject the file
-    cb(new Error('Invalid file type. Only PDF and TXT files are allowed.'));
-  }
-};
-
 export const noteUpload = multer({
   storage: noteStorage,
   limits: {
     fileSize: 5000000,
-  },
-  fileFilter: noteFileFilter
+  }
 });
