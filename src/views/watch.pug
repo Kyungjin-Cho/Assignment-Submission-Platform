@@ -24,9 +24,18 @@ block content
 
             div.video__data
                 p.video__title=video.title
+
+                if video.hashtags && video.hashtags.length
+                    p.video__hashtags
+                        each hashtag in video.hashtags
+                            a(href=`/search?keyword=${hashtag.substring(1)}`)= hashtag + ' '
+                br
+                if video.description && video.description.length
+                    p.video__description=video.description
+                br
                 small.video__owner Uploaded by 
                     a(href=`/users/${video.owner._id}`)=video.owner.name
-                small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+                small.video__createdAt=new Date(video.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
                 br
                 if String(video.owner._id) === String(loggedInUser._id)
                     a.video__edit(href=`${video.id}/edit`) Edit Video &rarr;
@@ -63,7 +72,6 @@ block content
                             span  #{comment.text}
                             if String(comment.owner._id) === String(loggedInUser._id)
                                 span.comment__delete.delete-comment X
-
 
 block scripts
     script(src="/static/js/videoPlayer.js")

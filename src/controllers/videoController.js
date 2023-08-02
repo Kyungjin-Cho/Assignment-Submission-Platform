@@ -119,13 +119,15 @@ export const search = async (req, res) => {
   let videos = [];
   if (keyword) {
     videos = await Video.find({
-      title: {
+      hashtags: {
         $regex: new RegExp(keyword, "i"),
       },
     }).populate("owner");
   }
   return res.render("search", { pageTitle: "Search", videos });
 };
+
+
 
 
 export const registerView = async (req, res) => {

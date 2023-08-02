@@ -15,8 +15,13 @@ const addComment = (text, id, owner) => {
   newComment.className = "video__comment";
   
   const img = document.createElement("img");
-  img.src = `/${owner.avatarUrl}`;
-  img.alt = "Profile Picture";
+  if (owner.avatarUrl) {
+    img.src = `/${owner.avatarUrl}`;
+    img.alt = "Profile Picture";
+  } else {
+    img.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`<text x="0" y="15" font-size="20" fill="black">😀</text>`);
+    img.alt = "Default Profile Picture";
+  }
   img.style.width = "30px"; 
   img.style.height = "30px";
   img.style.marginRight = "15px";

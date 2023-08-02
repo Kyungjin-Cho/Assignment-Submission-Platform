@@ -431,33 +431,37 @@ form label {
 }
 #left-watch .video__data .video__title {
   font-size: 26px;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-#left-watch .video__data .video__createdAt {
-  font-size: 12px;
-  font-family: "Indie Flower", cursive;
+#left-watch .video__data .video__hashtags {
+  margin-bottom: 10px;
 }
-#left-watch .video__data .video__owner {
-  margin-bottom: 5px;
+#left-watch .video__data .video__hashtags a {
+  color: skyblue;
+  margin-right: 5px;
+}
+#left-watch .video__data .video__hashtags a:hover {
+  text-decoration: underline;
+}
+#left-watch .video__data .video__description {
   font-size: 14px;
+  margin-bottom: 10px;
 }
-#left-watch .video__data .video__owner a {
+#left-watch .video__data small.video__owner, #left-watch .video__data .video__createdAt {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+#left-watch .video__data .video__owner a, #left-watch .video__data .video__createdAt a {
   color: cornflowerblue;
   text-decoration: underline;
 }
-#left-watch .video__data .video__edit {
+#left-watch .video__data .video__edit, #left-watch .video__data .video__delete {
   color: wheat;
   width: 150px;
+  margin: 5px 0;
 }
-#left-watch .video__data .video__edit:hover {
-  text-transform: uppercase;
-  font-weight: bolder;
-}
-#left-watch .video__data .video__delete {
-  color: wheat;
-  width: 150px;
-}
-#left-watch .video__data .video__delete:hover {
+#left-watch .video__data .video__edit:hover, #left-watch .video__data .video__delete:hover {
   text-transform: uppercase;
   font-weight: bolder;
 }
