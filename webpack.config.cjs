@@ -10,7 +10,6 @@ module.exports = {
     recorder: BASE_JS + "recorder.js",
     commentSection: BASE_JS + "commentSection.js",
     confirmDelete: BASE_JS + "confirmDelete.js",
-    uploadNote: BASE_JS + "uploadNote.js"
   },
   mode: "development",
   watch: true,

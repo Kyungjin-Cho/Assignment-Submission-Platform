@@ -1,4 +1,5 @@
 import multer from "multer";
+import path from "path";
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -39,11 +40,29 @@ export const videoUpload = multer({
   },
 });
 
-export const noteUpload = multer({
-  dest: "uploads/notes/",
-  limits: {
-    fileSize: 5000000,
+const noteStorage = multer.diskStorage({
+  destination: "uploads/notes/",
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const basename = path.basename(file.originalname, ext);
+    cb(null, `${basename}-${Date.now()}${ext}`);
   },
 });
 
+const noteFileFilter = (req, file, cb) => {
+  // Allow only PDF and TXT
+  if (file.mimetype === 'application/pdf' || file.mimetype === 'text/plain') {
+    cb(null, true); // Accept the file
+  } else {
+    cb(null, false); // Reject the file
+    cb(new Error('Invalid file type. Only PDF and TXT files are allowed.'));
+  }
+};
 
+export const noteUpload = multer({
+  storage: noteStorage,
+  limits: {
+    fileSize: 5000000,
+  },
+  fileFilter: noteFileFilter
+});

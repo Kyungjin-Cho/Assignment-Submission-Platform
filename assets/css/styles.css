@@ -459,6 +459,24 @@ form label {
   text-transform: uppercase;
   font-weight: bolder;
 }
+#left-watch .note-download {
+  margin-top: 10px;
+}
+#left-watch .note-download .note-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+#left-watch .note-download .note-description {
+  font-size: 14px;
+  color: grey;
+}
+#left-watch .note-download a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+#left-watch .note-download a:hover {
+  color: royalblue;
+}
 
 #right-watch {
   flex: 1;

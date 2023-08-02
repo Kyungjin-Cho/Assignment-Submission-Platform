@@ -32,15 +32,21 @@ block content
                     br
                     a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
                     br
-                    div.note-upload
-                        form(action=`/notes/${video._id}/upload`, method="post", enctype="multipart/form-data")
-                            input(type="file", name="note")
-                            input(type="text", name="description", placeholder="Brief description about the note...")
-                            button(type="submit") Upload Note
-                if video.note
+                if !video.notes || video.notes.length === 0
+                    if String(video.owner._id) === String(loggedInUser._id)
+                        div.note-upload
+                            form(action=`/notes/${video._id}/upload`, method="post", enctype="multipart/form-data")
+                                input(type="file", name="note")
+                                input(type="text", name="title", placeholder="Enter note title...")
+                                input(type="text", name="description", placeholder="Brief description about the note...")
+                                button(type="submit") Upload Note
+                else
                     div.note-download
-                        a(href=`/notes/${video.note._id}/download`) Download Note
-                        p.note-description=video.note.description
+                        - let note = video.notes[0]
+                        p.note-title= note.title 
+                        p.note-description= note.description 
+                        a(href=`/notes/${note._id}/download`) Download Note
+
         div#right-watch            
             if loggedIn
                 div.video__add-comments
@@ -63,7 +69,6 @@ block content
 
 block scripts
     script(src="/static/js/videoPlayer.js")
-    script(src="/static/js/uploadNote.js")
     if loggedIn
         script(src="/static/js/commentSection.js")
     script(src="/static/js/confirmDelete.js")

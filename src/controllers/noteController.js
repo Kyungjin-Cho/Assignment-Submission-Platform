@@ -1,38 +1,51 @@
 import Note from "../models/Note";
 import Video from "../models/Video";
+import path from "path";
 
 export const getUpload = (req, res) => {
-    return res.render("uploadNote", { pageTitle: "Upload Note" });
+  return res.render("uploadNote", { pageTitle: "Upload Note" });
 };
 
 export const postUpload = async (req, res) => {
-    const {
-        user: { _id },
-        params: { id },
-        file,
-        body: { title, description }
-    } = req;
-    const video = await Video.findById(id);
-    if (!video) {
-        return res.status(404).render("404", { pageTitle: "Video not found." });
-    }
-    const note = await Note.create({
-        title,
-        description,
-        fileUrl: file ? file.path : "",
-        owner: _id,
-        video: id
-    });
-    video.notes.push(note._id);
-    video.save();
-    return res.redirect(`/videos/${id}`);
+  // Accessing the user's ID from req.session.user instead of req.user
+  const {
+    user: { _id } = req.session, // Update this line
+    params: { id },
+    file,
+    body: { title, description }
+  } = req;
+
+  // Check for required fields
+  if (!title) {
+    return res.status(400).render("400", { pageTitle: "Title is required" });
+  }
+
+  const video = await Video.findById(id).populate("notes");
+  if (!video) {
+    return res.status(404).render("404", { pageTitle: "Video not found." });
+  }
+  
+  const note = await Note.create({
+    title,
+    description,
+    fileUrl: file ? file.path : "",
+    owner: _id,
+    video: id
+  });
+  
+  video.notes = [note._id]; 
+  await video.save();
+  return res.redirect(`/videos/${id}`);
 };
 
+
 export const downloadNote = async (req, res) => {
-    const { id } = req.params;
-    const note = await Note.findById(id);
-    if (!note) {
-        return res.status(404).render("404", { pageTitle: "Note not found." });
-    }
-    res.download(note.fileUrl);
+  const { id } = req.params;
+  const note = await Note.findById(id);
+  if (!note) {
+    return res.status(404).render("404", { pageTitle: "Note not found." });
+  }
+  const absolutePath = path.resolve(note.fileUrl);
+  res.download(absolutePath);
 };
+
