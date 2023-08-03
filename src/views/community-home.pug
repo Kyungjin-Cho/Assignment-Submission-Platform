@@ -1,0 +1,31 @@
+extends base
+
+block content
+  div.community-header
+    h1= community.name
+    p.topic= 'Topic: ' + community.topic
+    p.owner= 'Owner: ' + community.owner.name
+    p.members= 'Members: ' + community.members.length + (community.members.length > 1 ? ' members' : ' member')
+    p.description 
+      strong Desc: 
+      br
+      | #{community.description}
+  div.posts
+    each post in community.posts
+      div.post-card
+        if post.image
+          img(src=`/uploads/posts/${post.image}`, alt=post.title)
+        div.post-content
+          h3= post.title
+          p= post.description
+          a(href=`/community/${community._id}/post/${post._id}`) View More
+
+  form.create-post(method="POST", action=`/community/${community._id}/post`, enctype="multipart/form-data")
+    label(for="title") Post Title
+    input(type="text", id="title", name="title", placeholder="Enter Post Title")
+    label(for="description") Post Description
+    textarea(id="description", name="description", placeholder="Enter Post Description")
+    label(for="image") Upload Post Image
+    input(type="file", id="image", name="image")
+    button(type="submit") Create Post
+

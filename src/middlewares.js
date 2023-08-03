@@ -54,3 +54,18 @@ export const noteUpload = multer({
     fileSize: 5000000,
   }
 });
+
+const postStorage = multer.diskStorage({
+  destination: "uploads/posts/",
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const basename = path.basename(file.originalname, ext);
+    cb(null, `${basename}-${Date.now()}${ext}`);
+  },
+});
+export const postUpload = multer({
+  storage: postStorage,
+  limits: {
+    fileSize: 5000000, // 5MB limit
+  },
+});

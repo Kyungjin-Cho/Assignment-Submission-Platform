@@ -6,11 +6,17 @@ const communitySchema = new mongoose.Schema({
     description: { type: String, required: true },
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    posts: [{
-        content: String,
-        image: String,
-        postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    }]
+    posts: [
+      {
+        title: String,
+        description: String,
+        image: String, // URL of the image
+        postedBy: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+        },
+      },
+    ],
 });
 
 const Community = mongoose.model('Community', communitySchema);

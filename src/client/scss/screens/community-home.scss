@@ -1,0 +1,42 @@
+.community-header,
+.create-post {
+  width: 40%;
+  float: left;
+  box-sizing: border-box; // Include padding and border in the element's total width
+}
+
+.posts {
+  width: 60%;
+  float: right;
+}
+
+.post-card {
+  width: calc(50% - 10px); // Fill half the container, leaving a small gap
+  box-sizing: border-box; // Include padding and border in the element's total width
+  padding: 10px; // Space inside the post cards
+  margin-bottom: 20px; // Space between post cards
+
+  &:nth-child(odd) { // Apply to every other post card
+    margin-right: 10px; // Gap between the post cards
+  }
+
+  img {
+    width: 100%; // Fill the width of the post card
+    height: auto; // Maintain aspect ratio
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .community-header,
+  .create-post {
+    width: 100%; // Stack on small screens
+  }
+
+  .posts {
+    width: 100%;
+  }
+
+  .post-card {
+    width: 100%;
+  }
+}
