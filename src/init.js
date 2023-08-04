@@ -1,5 +1,8 @@
 // Initilize everything
 
+// Import regenerator-runtime
+import "regenerator-runtime";
+
 // Import dotenv
 import "dotenv/config";
 

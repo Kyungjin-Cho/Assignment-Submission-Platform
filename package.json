@@ -7,6 +7,8 @@
     "url": "git+https://github.com/Kyungjin-Cho/Youtube-App.git"
   },
   "scripts": {
+    "start": "node build/init.js",
+    "build:server": "babel src -d build",
     "dev:server": "nodemon",
     "dev:assets": "webpack"
   },
@@ -17,10 +19,8 @@
   },
   "homepage": "https://github.com/Kyungjin-Cho/Youtube-App#readme",
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^38.1.1",
     "@ffmpeg/core": "^0.8.5",
     "@ffmpeg/ffmpeg": "^0.9.7",
-    "@google-cloud/speech": "^5.6.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.2",
     "connect": "^3.7.0",
@@ -39,7 +39,8 @@
     "serve-static": "^1.15.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^8.0.6",
