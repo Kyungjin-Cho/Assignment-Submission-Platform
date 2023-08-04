@@ -616,6 +616,34 @@ form label {
   color: black;
   font-weight: bolder;
 }
+.container .button, .container .community__delete {
+  padding: 10px;
+  color: white;
+  background-color: teal;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Indie Flower", cursive;
+}
+.container .button:hover, .container .community__delete:hover {
+  background-color: lemonchiffon;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bolder;
+}
+.container form {
+  background-color: transparent;
+}
+.container .community__delete {
+  background-color: teal;
+}
+.container .community__delete:hover {
+  background-color: lemonchiffon;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bolder;
+}
 .container .communities {
   flex: 2;
   display: grid;
@@ -633,7 +661,7 @@ form label {
   transition: box-shadow 0.3s ease;
 }
 .container .community:hover {
-  box-shadow: 0 0 10px, lemonchiffon;
+  box-shadow: 0 0 10px lemonchiffon;
 }
 .container .community .icon {
   flex: 0.3;
@@ -649,30 +677,14 @@ form label {
 }
 .container .community .icon .button-area {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
-.container .community .icon .button-area a {
-  display: inline-block;
-  padding: 3px 6px;
-  background-color: teal;
-  color: whitesmoke;
-  border-radius: 5px;
+.container .community .icon .button-area a.button {
+  padding: 10px;
   text-decoration: none;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-.container .community .icon .button-area a:hover {
-  color: black;
-  background-color: lemonchiffon;
-  text-transform: uppercase;
-  font-weight: bolder;
-}
-.container .community .icon .button-area a button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  padding: 0;
-  font-family: inherit;
-  outline: none;
 }
 .container .community .details {
   flex: 0.7;
@@ -707,42 +719,102 @@ form label {
   }
 }
 
-.community-header,
-.create-post {
-  width: 40%;
-  float: left;
-  box-sizing: border-box;
+.community-wrapper {
+  display: flex;
 }
 
-.posts {
+.community-left {
+  width: 40%;
+  float: left;
+}
+
+.community-right {
+  margin-left: 10px;
   width: 60%;
   float: right;
 }
 
-.post-card {
-  width: calc(50% - 10px);
-  box-sizing: border-box;
-  padding: 10px;
-  margin-bottom: 20px;
+.community-header,
+.create-post {
+  width: 100%;
 }
-.post-card:nth-child(odd) {
-  margin-right: 10px;
+
+.community-header {
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.community-header h1 {
+  font-size: 2em;
+  color: goldenrod;
+  margin-bottom: 10px;
+}
+.community-header p {
+  font-size: 1em;
+  color: #87CEEB;
+  margin-bottom: 5px;
+}
+.community-header p.topic, .community-header p.owner, .community-header p.members {
+  font-weight: bold;
+}
+.community-header p.description {
+  margin-top: 10px;
+}
+.community-header p.description strong {
+  color: goldenrod;
+}
+
+.create-post button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  color: white;
+  background-color: teal;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Indie Flower", cursive;
+}
+.create-post button:hover {
+  background-color: lemonchiffon;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bolder;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
 }
 .post-card img {
   width: 100%;
   height: auto;
 }
+.post-card .post-content h3 {
+  font-size: 1.5em;
+  color: wheat;
+}
+.post-card .post-content p {
+  font-size: 1em;
+}
 
 @media screen and (max-width: 767px) {
-  .community-header,
-  .create-post {
-    width: 100%;
+  .community-wrapper {
+    flex-direction: column;
   }
-  .posts {
+  .community-left,
+  .community-right {
     width: 100%;
-  }
-  .post-card {
-    width: 100%;
+    margin: 5px;
   }
 }
 a {

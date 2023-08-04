@@ -45,6 +45,39 @@
     }
   }
 
+  .button, .community__delete {
+    padding: 10px;
+    color: white;
+    background-color: teal;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Indie Flower', cursive;
+
+    &:hover {
+      background-color: lemonchiffon;
+      text-transform: uppercase;
+      color: black;
+      font-weight: bolder;
+    }
+  }
+
+  form {
+    background-color: transparent;
+  }
+
+  .community__delete {
+    background-color: teal;
+
+    &:hover {
+      background-color: lemonchiffon;
+      text-transform: uppercase;
+      color: black;
+      font-weight: bolder;
+    }
+  }
+
   .communities {
     flex: 2;
     display: grid;
@@ -55,7 +88,7 @@
   .community {
     display: flex;
     flex-direction: row;
-    align-items: flex-start; 
+    align-items: flex-start;
     justify-content: start;
     border: 1px solid #ddd;
     background-color: whitesmoke;
@@ -63,54 +96,32 @@
     transition: box-shadow 0.3s ease;
 
     &:hover {
-      box-shadow: 0 0 10px, lemonchiffon;
+      box-shadow: 0 0 10px lemonchiffon;
     }
 
     .icon {
       flex: 0.3;
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       margin-right: 20px;
-      
+
       i {
         font-size: 3em;
         margin-bottom: 10px;
       }
-      
+
       .button-area {
         margin-top: 20px;
-      
-        a {
-          display: inline-block; // Add this line to fix the alignment
-      
-          // Styles for both links and buttons inside a tags
-          padding: 3px 6px;
-          background-color: teal;
-          color: whitesmoke;
-          border-radius: 5px;
+        display: flex; // Set display to flex
+        flex-direction: column; // Set flex direction to column
+        align-items: center; // Center align buttons
+        gap: 5px; // Add gap between buttons
+
+        a.button {
+          padding: 10px;
           text-decoration: none;
-          transition: color 0.3s ease, background-color 0.3s ease;
-      
-          // Specific hover effect for the anchor tags
-          &:hover {
-            color: black;
-            background-color: lemonchiffon;
-            text-transform: uppercase;
-            font-weight: bolder;
-          }
-      
-          // Style the button inside the anchor to match
-          button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: inherit; // Inherit the color from the a tag
-            padding: 0; // Remove padding from button
-            font-family: inherit; // Inherit font from a tag
-            outline: none; // Remove outline
-          }
         }
       }
     }
@@ -126,7 +137,7 @@
         font-size: 1.2em;
         font-weight: bold;
       }
-      
+
       p {
         margin: 2px 0;
         font-size: 0.9em;

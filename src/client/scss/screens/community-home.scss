@@ -1,42 +1,110 @@
-.community-header,
-.create-post {
-  width: 40%;
-  float: left;
-  box-sizing: border-box; // Include padding and border in the element's total width
+.community-wrapper {
+  display: flex;
 }
 
-.posts {
+.community-left {
+  width: 40%;
+  float: left;
+}
+
+.community-right {
+  margin-left: 10px;
   width: 60%;
   float: right;
 }
 
-.post-card {
-  width: calc(50% - 10px); // Fill half the container, leaving a small gap
-  box-sizing: border-box; // Include padding and border in the element's total width
-  padding: 10px; // Space inside the post cards
-  margin-bottom: 20px; // Space between post cards
+.community-header,
+.create-post {
+  width: 100%;
+}
 
-  &:nth-child(odd) { // Apply to every other post card
-    margin-right: 10px; // Gap between the post cards
+.community-header {
+  padding: 10px; // Generous padding to space out elements
+  margin-bottom: 10px; // Space below the header
+  text-align: center; // Centered text alignment
+
+  h1 {
+    font-size: 2em; // Large font size for the community name
+    color: goldenrod; // Gold color for the title
+    margin-bottom: 10px; // Space between name and details
   }
 
+  p {
+    font-size: 1em; // Standard font size for details
+    color: #87CEEB; // Sky blue color for the text
+    margin-bottom: 5px; // Space between lines of text
+
+    &.topic, &.owner, &.members {
+      font-weight: bold; // Bold text for key details
+    }
+    
+    &.description {
+      margin-top: 10px; // Extra space before the description
+      strong {
+        color: goldenrod; // Gold color for "Desc:"
+      }
+    }
+  }
+}
+
+.create-post {
+  button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    background-color: teal;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Indie Flower', cursive;
+
+    &:hover {
+      background-color: lemonchiffon;
+      text-transform: uppercase;
+      color: black;
+      font-weight: bolder;
+    }
+  }
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc; // Added underline below each post-card
+
   img {
-    width: 100%; // Fill the width of the post card
-    height: auto; // Maintain aspect ratio
+    width: 100%;
+    height: auto;
+  }
+
+  .post-content {
+    h3 {
+      font-size: 1.5em; // Increase the font size of the h3
+      color: wheat;
+    }
+    p {
+      font-size: 1em; // You can adjust this value if needed
+    }
   }
 }
 
 @media screen and (max-width: 767px) {
-  .community-header,
-  .create-post {
-    width: 100%; // Stack on small screens
+  .community-wrapper {
+    flex-direction: column;
   }
 
-  .posts {
+  .community-left,
+  .community-right {
     width: 100%;
-  }
-
-  .post-card {
-    width: 100%;
+    margin: 5px;
   }
 }

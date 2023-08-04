@@ -1,7 +1,5 @@
-import path from 'path';
 import Community from '../models/Community';
 import User from '../models/User';
-import { postUpload } from '../middlewares';
 
 export const getCommunities = async (req, res) => {
   try {
@@ -76,14 +74,12 @@ export const joinCommunity = async (req, res) => {
 
 export const deleteCommunity = async (req, res) => {
   const { id } = req.params;
-  const {
-    user: { _id },
-  } = req.session;
+  const { _id } = req.session.user;
   const community = await Community.findById(id);
   if (String(community.owner) === String(_id)) {
     await Community.findByIdAndDelete(id);
   }
-  res.redirect('/');
+  res.redirect('/community');
 };
 
 export const postPost = async (req, res) => {

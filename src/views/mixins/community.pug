@@ -15,11 +15,13 @@ mixin community(community)
         i(class="fas fa-question-circle")
       .button-area
         if userId && community.members.map(String).includes(String(userId))
-          a(href=`/community/${community._id}`) View
+          a(href=`/community/${community._id}`, class="button") View
+          if String(community.owner._id) === String(userId)
+            form(method="POST", action=`/community/${community._id}/delete`, style="display: inline;")
+              button.community__delete(type="submit", class="button") Delete
         else
-          a
-            form(method="POST", action=`/community/${community._id}/join`)
-              button(type="submit") Join
+          form(method="POST", action=`/community/${community._id}/join`)
+            button(type="submit", class="button") Join
 
     div.details
       h2= community.name
@@ -30,3 +32,6 @@ mixin community(community)
         strong Desc: 
         br
         | #{community.description}
+
+block scripts
+  script(src="/static/js/confirmDelete.js")
