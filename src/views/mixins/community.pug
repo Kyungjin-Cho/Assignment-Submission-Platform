@@ -13,11 +13,14 @@ mixin community(community)
         i(class="fas fa-book")  
       else if community.topic === "etc"
         i(class="fas fa-question-circle")
-      div.button-area
+      .button-area
         if userId && community.members.map(String).includes(String(userId))
           a(href=`/community/${community._id}`) View
         else
-          a(href=`/community/${community._id}`/join) Join
+          a
+            form(method="POST", action=`/community/${community._id}/join`)
+              button(type="submit") Join
+
     div.details
       h2= community.name
       p.topic= 'Topic: ' + community.topic

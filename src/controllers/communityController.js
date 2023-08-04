@@ -50,16 +50,29 @@ export const postCommunity = async (req, res) => {
 
 export const joinCommunity = async (req, res) => {
   const { id } = req.params;
-  const {
-    user: { _id },
-  } = req.session;
-  const community = await Community.findById(id);
-  if (!community.members.includes(_id)) {
-    community.members.push(_id);
-    await community.save();
+  const { _id } = req.session.user;
+  try {
+    const community = await Community.findById(id);
+    if (!community.members.includes(_id)) {
+      community.members.push(_id);
+      await community.save();
+
+      // Finding user and ensuring the user exists
+      const user = await User.findById(_id);
+      if (!user) {
+        console.log(`User with ID ${_id} not found`);
+        return res.redirect('/community'); // Redirect to a suitable error or community page
+      }
+      user.communities.push(id);
+      await user.save();
+    }
+    res.redirect(`/community/${id}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/community'); // Redirect to a suitable error or community page
   }
-  res.redirect(`/community/${id}`);
 };
+
 
 export const deleteCommunity = async (req, res) => {
   const { id } = req.params;

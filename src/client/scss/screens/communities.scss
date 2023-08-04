@@ -81,19 +81,35 @@
       
       .button-area {
         margin-top: 20px;
+      
         a {
-          padding: 5px 10px;
+          display: inline-block; // Add this line to fix the alignment
+      
+          // Styles for both links and buttons inside a tags
+          padding: 3px 6px;
           background-color: teal;
           color: whitesmoke;
           border-radius: 5px;
           text-decoration: none;
           transition: color 0.3s ease, background-color 0.3s ease;
-
+      
+          // Specific hover effect for the anchor tags
           &:hover {
             color: black;
             background-color: lemonchiffon;
             text-transform: uppercase;
             font-weight: bolder;
+          }
+      
+          // Style the button inside the anchor to match
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit; // Inherit the color from the a tag
+            padding: 0; // Remove padding from button
+            font-family: inherit; // Inherit font from a tag
+            outline: none; // Remove outline
           }
         }
       }

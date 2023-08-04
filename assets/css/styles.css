@@ -651,7 +651,8 @@ form label {
   margin-top: 20px;
 }
 .container .community .icon .button-area a {
-  padding: 5px 10px;
+  display: inline-block;
+  padding: 3px 6px;
   background-color: teal;
   color: whitesmoke;
   border-radius: 5px;
@@ -663,6 +664,15 @@ form label {
   background-color: lemonchiffon;
   text-transform: uppercase;
   font-weight: bolder;
+}
+.container .community .icon .button-area a button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  font-family: inherit;
+  outline: none;
 }
 .container .community .details {
   flex: 0.7;

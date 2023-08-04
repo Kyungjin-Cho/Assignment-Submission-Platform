@@ -10,6 +10,9 @@ import session from "express-session";
 // Import express-flash
 import flash from "express-flash";
 
+// Import body-parser
+import bodyParser from "body-parser";
+
 // Import Mongo Store
 import MongoStore from "connect-mongo";
 
@@ -37,6 +40,9 @@ app.set("views", process.cwd() + "/src/views");
 
 // Execute controller(middleware)
 app.use(logger);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Make express application understand transferred values of form
 app.use(express.urlencoded({extended: true}));
