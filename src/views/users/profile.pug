@@ -7,7 +7,7 @@ block content
         if !user.avatarUrl
             span.header__temp 😀
         else
-            if user.avatarUrl.includes("github")
+            if user.avatarUrl.toString().includes("github")
                 img.header__avatar(src=user.avatarUrl)
             else 
                 img.header__avatar(src="/" + user.avatarUrl)
