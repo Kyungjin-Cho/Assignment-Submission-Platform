@@ -64,10 +64,14 @@ block content
                 ul
                     each comment in video.comments.reverse()
                         li.video__comment(data-id=comment.id)
-                            if comment.owner.avatarUrl
-                                img(src=`/${comment.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
-                            else
+                            if !comment.owner.avatarUrl
                                 span(style="font-size: 30px; margin-right: 10px") 😀
+                            else
+                                if comment.owner.avatarUrl.includes
+                                    img(src=`${commsent.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
+                                else 
+                                    img(src=`/${comment.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
+
                             a.comment__username(href=`/users/${comment.owner._id}`, style="margin-right: 10px")=comment.owner.name + ':'
                             span  #{comment.text}
                             if String(comment.owner._id) === String(loggedInUser._id)
