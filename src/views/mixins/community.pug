@@ -26,7 +26,10 @@ mixin community(community)
     div.details
       h2= community.name
       p.topic= 'Topic: ' + community.topic
-      p.owner= 'Owner: ' + community.owner.name
+      if community.owner
+        p.owner= 'Owner: ' + community.owner.name
+      else
+        p.owner= 'Owner information not available'
       p.members= 'Members: ' + community.members.length + (community.members.length > 1 ? ' members' : ' member')
       p.description 
         strong Desc: 
