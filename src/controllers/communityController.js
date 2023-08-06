@@ -6,7 +6,7 @@ import User from '../models/User';
 export const getCommunities = async (req, res) => {
   try {
       const communities = await Community.find({}).populate('owner');
-      return res.render('communities', { communities, userId: req.session.user?._id });
+      return res.render('communities', { pageTitle: "Communities", communities, userId: req.session.user?._id });
   } catch (error) {
       console.log(error);
       res.status(400).render('errorPage', { errorMessage: error.message });
@@ -17,7 +17,7 @@ export const getCommunities = async (req, res) => {
 export const getCommunity = async (req, res) => {
   const { id } = req.params;
   const community = await Community.findById(id).populate('owner').populate('members').populate('posts.postedBy');
-  return res.render('community-home', { community, userId: req.session.user?._id });
+  return res.render('community-home', { pageTitle: "Community", community, userId: req.session.user?._id });
 };
 
 // Create a new community and render the community page
