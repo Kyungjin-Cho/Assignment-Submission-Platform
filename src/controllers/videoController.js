@@ -1,7 +1,9 @@
+// Import relevant models
 import Video from "../models/Video";
 import User from "../models/User";
 import Comment from "../models/Comment";
 
+// Render the home page with all videos sorted by creation date
 export const home = async (req, res) => {
   const videos = await Video.find({})
     .sort({ createdAt: "desc" })
@@ -9,6 +11,7 @@ export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
 
+// Render the watch page for a single video by ID
 export const watch = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id)
@@ -26,7 +29,7 @@ export const watch = async (req, res) => {
   return res.render("watch", { pageTitle: video.title, video });
 };
 
-
+// Get the edit page for a video by ID if the user is the owner
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const {
@@ -43,6 +46,7 @@ export const getEdit = async (req, res) => {
   return res.render("edit", { pageTitle: `Edit: ${video.title}`, video });
 };
 
+// Edit a video by ID and redirect to the video's page
 export const postEdit = async (req, res) => {
   const {
     user: { _id },
@@ -66,10 +70,12 @@ export const postEdit = async (req, res) => {
   return res.redirect(`/videos/${id}`);
 };
 
+// Render the video upload page
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 
+// Upload a new video and redirect to the home page
 export const postUpload = async (req, res) => {
   const {
     user: { _id },
@@ -98,6 +104,7 @@ export const postUpload = async (req, res) => {
   }
 };
 
+// Delete a video by ID if the user is the owner and redirect to the home page
 export const deleteVideo = async (req, res) => {
   const { id } = req.params;
   const {
@@ -114,6 +121,7 @@ export const deleteVideo = async (req, res) => {
   return res.redirect("/");
 };
 
+// Render the search results page for videos with matching hashtags
 export const search = async (req, res) => {
   const { keyword } = req.query;
   let videos = [];

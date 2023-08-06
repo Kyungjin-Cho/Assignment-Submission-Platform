@@ -1,15 +1,18 @@
+// Import relevant models and path
 import Note from "../models/Note";
 import Video from "../models/Video";
 import path from "path";
 
+// Render the upload note page
 export const getUpload = (req, res) => {
   return res.render("uploadNote", { pageTitle: "Upload Note" });
-};
+}
 
+// Handle post request to upload note
 export const postUpload = async (req, res) => {
   // Accessing the user's ID from req.session.user instead of req.user
   const {
-    user: { _id } = req.session, // Update this line
+    user: { _id } = req.session, 
     params: { id },
     file,
     body: { title, description }
@@ -38,7 +41,7 @@ export const postUpload = async (req, res) => {
   return res.redirect(`/videos/${id}`);
 };
 
-
+// Handle request for downloading a note
 export const downloadNote = async (req, res) => {
   const { id } = req.params;
   const note = await Note.findById(id);
@@ -48,4 +51,3 @@ export const downloadNote = async (req, res) => {
   const absolutePath = path.resolve(note.fileUrl);
   res.download(absolutePath);
 };
-

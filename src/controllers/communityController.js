@@ -1,6 +1,8 @@
+// Import relevant models
 import Community from '../models/Community';
 import User from '../models/User';
 
+// Get all communities and render the communities page
 export const getCommunities = async (req, res) => {
   try {
       const communities = await Community.find({}).populate('owner');
@@ -11,14 +13,14 @@ export const getCommunities = async (req, res) => {
   }
 };
 
+// Get a single community by ID and render the community home page
 export const getCommunity = async (req, res) => {
   const { id } = req.params;
   const community = await Community.findById(id).populate('owner').populate('members').populate('posts.postedBy');
   return res.render('community-home', { community, userId: req.session.user?._id });
 };
 
-
-
+// Create a new community and render the community page
 export const postCommunity = async (req, res) => {
   const { name, topic, description } = req.body;
   const {
@@ -46,6 +48,7 @@ export const postCommunity = async (req, res) => {
   }
 };
 
+// Add a user to a community's member list and redirect to the community's page
 export const joinCommunity = async (req, res) => {
   const { id } = req.params;
   const { _id } = req.session.user;
@@ -71,7 +74,7 @@ export const joinCommunity = async (req, res) => {
   }
 };
 
-
+// Delete a community if the user is the owner and redirect to the community page
 export const deleteCommunity = async (req, res) => {
   const { id } = req.params;
   const { _id } = req.session.user;
@@ -82,6 +85,7 @@ export const deleteCommunity = async (req, res) => {
   res.redirect('/community');
 };
 
+// Post a new post within a community and redirect to the community's page
 export const postPost = async (req, res) => {
   const { id } = req.params;
   const {

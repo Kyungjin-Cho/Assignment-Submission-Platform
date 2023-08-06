@@ -1,8 +1,12 @@
+// Import User model, bcrypt and note-fetcch
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
+// Render the join page
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+
+// Handle post request for user join
 export const postJoin = async (req, res) => {
   const { name, username, email, password, password2, location } = req.body;
   const pageTitle = "Join";
@@ -35,9 +39,12 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
+// Render the login page
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
+// Handle post request for user login
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -60,6 +67,7 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
+// Start the GitHub login process
 export const startGithubLogin = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
@@ -72,6 +80,7 @@ export const startGithubLogin = (req, res) => {
   return res.redirect(finalUrl);
 };
 
+// Finish the GitHub login process
 export const finishGithubLogin = async (req, res) => {
   const baseUrl = "https://github.com/login/oauth/access_token";
   const config = {
@@ -133,15 +142,19 @@ export const finishGithubLogin = async (req, res) => {
   }
 };
 
+// Handle user logout
 export const logout = (req, res) => { 
   req.session.user = null; 
   req.session.loggedIn = false; 
   req.flash("info", "Bye Bye"); 
   return res.redirect("/"); }
 
+// Render the edit profile page
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
+
+// Handle post request for editing profile
 export const postEdit = async (req, res) => {
   const {
     session: {
@@ -165,6 +178,7 @@ export const postEdit = async (req, res) => {
   return res.redirect("/users/edit");
 };
 
+// Render the change password page
 export const getChangePassword = (req, res) => {
   if (req.session.user.socialOnly === true) {
     req.flash("error", "Can't change password.");
@@ -172,6 +186,8 @@ export const getChangePassword = (req, res) => {
   }
   return res.render("users/change-password", { pageTitle: "Change Password" });
 };
+
+// Handle post request for changing password
 export const postChangePassword = async (req, res) => {
   const {
     session: {
@@ -199,6 +215,7 @@ export const postChangePassword = async (req, res) => {
   return res.redirect("/users/logout");
 };
 
+// Render the user profile page
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate({
