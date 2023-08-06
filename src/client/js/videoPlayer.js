@@ -60,20 +60,23 @@ const handleVolumeChange = (event) => {
   video.volume = value;
   };
 
-  // Implement time of video function
+// Set format of time of video function
 const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substr(14, 5);
 
+// Implement time of video function
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
   timeline.max = Math.floor(video.duration);
 };
 
+// Implement time of video update function
 const handleTimeUpdate = () => {
   currenTime.innerText = formatTime(Math.floor(video.currentTime));
   timeline.value = Math.floor(video.currentTime);
 };
 
+// Implement timeline change function
 const handleTimelineChange = (event) => {
   const {
     target: { value },
@@ -81,6 +84,7 @@ const handleTimelineChange = (event) => {
   video.currentTime = value;
 };
 
+// Implement full screen function
 const handleFullscreen = () => {
   const fullscreen = document.fullscreenElement;
   if (fullscreen) {
@@ -92,8 +96,10 @@ const handleFullscreen = () => {
   }
 };
 
+// Implement hideControls function
 const hideControls = () => videoControls.classList.remove("showing");
 
+// Implement mousemove function
 const handleMouseMove = () => {
   if (controlsTimeout) {
     clearTimeout(controlsTimeout);
@@ -107,14 +113,17 @@ const handleMouseMove = () => {
   controlsMovementTimeout = setTimeout(hideControls, 3000);
 };
 
+// Implement mouseleave function
 const handleMouseLeave = () => {
   controlsTimeout = setTimeout(hideControls, 3000);
 };
 
+// Implement change of video time function
 const changeVideoTime = (seconds) => {
   video.currentTime += seconds;
 };
 
+// Implement shortcut using keyboard
 const handleKeydown = (event) => {
   console.log(event);
   if (event.code === "Space") {
