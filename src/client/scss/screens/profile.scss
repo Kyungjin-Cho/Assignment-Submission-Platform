@@ -1,20 +1,20 @@
 .profile__data {
   max-width: 420px;
-  margin: 0 auto;
+  margin: 0 auto; // Center the container
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; // Arrange children vertically
+  align-items: center; // Center align children horizontally
   margin-bottom: 50px;
   img {
-    margin-bottom: 10px;
+    margin-bottom: 10px; // Space below the image
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 50%; // Circular image
   }
   h3 {
-    font-size: 18px;
+    font-size: 18px; // Font size for the header
   }
   .header__temp {
-    font-size: 200px;
+    font-size: 200px; // Extra large font size for temperature
   }
 }

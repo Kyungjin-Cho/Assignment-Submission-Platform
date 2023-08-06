@@ -1,13 +1,13 @@
 .upload__container {
-  width: 100%;
+  width: 100%; // Container taking the full width
   .upload__video {
-    margin-bottom: 20px;
+    margin-bottom: 20px; // Margin below video section
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; // Arrange children vertically
+    align-items: center; // Center align children horizontally
     video {
-      max-width: 100%;
-      margin-bottom: 10px;
+      max-width: 100%; // Video takes the full available width
+      margin-bottom: 10px; // Space below the video
     }
   }
 }

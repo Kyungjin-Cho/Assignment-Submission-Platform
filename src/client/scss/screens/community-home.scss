@@ -1,23 +1,24 @@
+// Wrapper for community home
 .community-wrapper {
   display: flex;
 }
-
+// Left side of the community section
 .community-left {
   width: 40%;
   float: left;
 }
-
+// Right side of the community section
 .community-right {
   margin-left: 10px;
   width: 60%;
   float: right;
 }
-
+// Full width for header and post creation section
 .community-header,
 .create-post {
   width: 100%;
 }
-
+// Styling properties for the community header
 .community-header {
   padding: 10px; // Generous padding to space out elements
   margin-bottom: 10px; // Space below the header
@@ -46,7 +47,7 @@
     }
   }
 }
-
+// Styling properties for the create post button
 .create-post {
   button {
     width: 100%;
@@ -68,12 +69,12 @@
     }
   }
 }
-
+// Container for posts
 .posts {
   display: flex;
   flex-direction: column;
 }
-
+// Styling properties for individual post cards
 .post-card {
   width: 100%;
   box-sizing: border-box;
@@ -96,7 +97,7 @@
     }
   }
 }
-
+// Mobile responsive adjustments
 @media screen and (max-width: 767px) {
   .community-wrapper {
     flex-direction: column;

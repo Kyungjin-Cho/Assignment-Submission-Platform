@@ -1,3 +1,4 @@
+// Form styling including dimensions, margins, background, border, and specific styling for search form
 form {
   max-width: 420px;
   margin: 0 auto;
@@ -9,6 +10,7 @@ form {
   }
 }
 
+// Input styling, excluding range inputs, for padding, border, color, and more
 input:not(input[type="range"]),
 input[type="submit"] {
   all: unset;
@@ -25,6 +27,7 @@ input[type="submit"] {
   }
 }
 
+// Specific styling for submit inputs and social buttons
 input[type="submit"],
 .social__btn {
   border-radius: 5px;

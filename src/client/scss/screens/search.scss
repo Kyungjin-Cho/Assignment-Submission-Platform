@@ -1,8 +1,9 @@
 .search__form {
-  margin-bottom: 60px;
+  margin-bottom: 60px; // Margin below the search form
   display: flex;
-  position: relative;
-  align-items: center;
+  position: relative; // Relative positioning for child elements
+  align-items: center; // Center align items vertically
+  // Styles for the input field
   input {
     all: unset;
     padding: 15px 20px;
@@ -14,15 +15,16 @@
     color: white;
     width: 90%;
   }
+  // Remove all default styling
   button {
     all: unset;
   }
   button {
-    position: absolute;
-    right: 15px;
+    position: absolute; // Absolute positioning for the button
+    right: 15px; // Align button to the right
     font-size: 18px;
     background-color: rgba(0, 0, 0, 0);
-    text-align: center;
-    cursor: pointer;
+    text-align: center; // Center align button text
+    cursor: pointer; // Cursor as pointer for better UX
   }
 }
