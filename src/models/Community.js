@@ -1,5 +1,7 @@
-import mongoose from 'mongoose';
+// Import mongoose to work with MongoDB
+import mongoose from "mongoose";
 
+// Define a schema for a community
 const communitySchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     topic: { type: String, required: true },
@@ -19,6 +21,9 @@ const communitySchema = new mongoose.Schema({
     ],
 });
 
+// Create a Community model using the community schema
 const Community = mongoose.model('Community', communitySchema);
+
+// Export the Community model
 export default Community;
 

@@ -1,5 +1,7 @@
+// Import mongoose to work with MongoDB
 import mongoose from "mongoose";
 
+// Define a schema for a video
 const videoSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxLength: 80 },
   fileUrl: { type: String, required: true },
@@ -19,11 +21,15 @@ const videoSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
+// Change format of hashtag when it's stored in database
 videoSchema.static("formatHashtags", function(hashtags) {
   return hashtags
     .split(",")
     .map((word) => (word.startsWith("#") ? `${word} ` : ` #${word}`))
 })
 
+// Create a Video model using the video schema
 const Video = mongoose.model("Video", videoSchema);
+
+// Export the Video model
 export default Video;
