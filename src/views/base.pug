@@ -1,18 +1,22 @@
+// Base layout for the site
 include mixins/message
 
 doctype html
 html(lang="ko")
     head
+        // Set the title and include essential styles
         title #{pageTitle} | NCIdeo
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
         link(rel="stylesheet", href="/static/css/styles.css")
     body
+        // Display messages if any (error, info, success)
         if messages.error
             +message("error", messages.error)
         if messages.info
             +message("info", messages.info)
         if messages.success
-            +message("sucess", messages.success)
+            +message("success", messages.success)
+        // Include header and footer with content block
         include partials/header                
         main
             block content

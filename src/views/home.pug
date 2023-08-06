@@ -2,6 +2,7 @@ extends base
 include mixins/video
 
 block content
+    // Display videos in grid or show empty message
     div.video-grid
         each video in videos
             +video(video)

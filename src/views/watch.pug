@@ -3,6 +3,7 @@ extends base
 block content
     div#watch-container
         div#left-watch
+            // Video player and controls
             div#videoContainer(data-id=video._id, tabindex="0")
                 video(src="/" + video.fileUrl)
                 div#videoControls.videoControls
@@ -21,7 +22,7 @@ block content
                     div
                         span#fullScreen
                             i.fas.fa-expand
-
+            // Video details and options to edit/delete if owner
             div.video__data
                 p.video__title=video.title
 
@@ -53,7 +54,7 @@ block content
                 else
                     div.note-download
                         a(href=`/notes/${video.notes[0]._id}/download`) Download Note →
-
+        // Comments section
         div#right-watch            
             if loggedIn
                 div.video__add-comments

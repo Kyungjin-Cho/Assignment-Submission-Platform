@@ -2,7 +2,9 @@ extends base
 include mixins/community
 
 block content
+    // Container for creating new communities
     div.container
+        // Form fields for community creation
         form.create-community(method="POST", action="/community")
             label(for="name") Community Name
             input(type="text", id="name", name="name", placeholder="New Community Name")
@@ -17,6 +19,7 @@ block content
                 option(value="theory") Theory
                 option(value="etc") ETC
             button(type="submit") Create Community
+        // List of existing communities
         div.communities
             each comm in communities
                 +community(comm)

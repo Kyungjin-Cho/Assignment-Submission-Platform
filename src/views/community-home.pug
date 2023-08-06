@@ -2,6 +2,7 @@ extends base
 
 block content
   div.community-wrapper
+    // Community details on the left
     div.community-left
       div.community-header
         h1= community.name
@@ -12,7 +13,7 @@ block content
           strong Desc: 
           br
           | #{community.description}
-
+      // Form to create a new post
       form.create-post(method="POST", action=`/community/${community._id}/post`, enctype="multipart/form-data")
         label(for="title") Post Title
         input(type="text", id="title", name="title", placeholder="Enter Post Title")
@@ -21,10 +22,11 @@ block content
         label(for="image") Upload Post Image
         input(type="file", id="image", name="image", accept="image/*")
         button(type="submit") Create Post
-
+    // Right section for displaying posts
     div.community-right
       div.posts
         each post in community.posts
+          // Individual post card
           div.post-card
             if post.image
               img(src=`${post.image}`, alt=post.title)
