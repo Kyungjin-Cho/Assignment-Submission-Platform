@@ -70,8 +70,10 @@ app.use(
   })
 );
 
+// Use flash
 app.use(flash());
 
+// Prevent error relevant to Favicon
 function ignoreFavicon(req, res, next) {
   if (req.originalUrl.includes('favicon.ico')) {
     res.status(204).end()
@@ -93,5 +95,5 @@ app.use("/community", communityRouter);
 app.use("/notes", noteRouter);
 app.use(ignoreFavicon);
 
-
+// Send server to app
 export default app;
