@@ -69,7 +69,7 @@ block content
                                 span(style="font-size: 30px; margin-right: 10px") 😀
                             else
                                 if comment.owner.avatarUrl.toString().includes
-                                    img(src=`${commsent.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
+                                    img(src=`${comment.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
                                 else 
                                     img(src=`/${comment.owner.avatarUrl}`, alt="Profile Picture", style="width: 30px; height: 30px; margin-right: 15px; margin-left: 5px; border-radius: 50%;" )
 
