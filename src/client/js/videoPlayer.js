@@ -1,3 +1,4 @@
+// Video player controls and event handlers for play, pause, mute, volume control, timeline, fullscreen, etc.
 const video = document.querySelector("video");
 const playBtn = document.getElementById("play");
 const playBtnIcon = playBtn.querySelector("i");
@@ -17,6 +18,7 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
+// Implement play function
 const handlePlayClick = (e) => {
   if (video.paused) {
     video.play();
@@ -26,6 +28,7 @@ const handlePlayClick = (e) => {
   playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
 };
 
+// Implement mute function
 const handleMuteClick = (e) => {
   if (video.muted) {
     video.muted = false;
@@ -38,6 +41,7 @@ const handleMuteClick = (e) => {
   volumeRange.value = video.muted ? 0 : volumeValue;
 };
 
+// Implement volumne adjustment function
 const handleVolumeChange = (event) => {
   const {
   target: { value },
@@ -56,6 +60,7 @@ const handleVolumeChange = (event) => {
   video.volume = value;
   };
 
+  // Implement time of video function
 const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substr(14, 5);
 

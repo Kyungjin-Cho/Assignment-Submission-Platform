@@ -1,5 +1,7 @@
+// Import async
 import { async } from "regenerator-runtime";
 
+// Get variables related to comment delete function
 window.addEventListener("DOMContentLoaded", (event) => {
   const deleteButtons = document.querySelectorAll('.comment__delete');
   deleteButtons.forEach(button => button.addEventListener('click', handleDelete));
@@ -9,6 +11,7 @@ const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
 const videoComments = document.querySelector(".video__comments ul");
 
+// Implement addComment function with profile picture and username
 const addComment = (text, id, owner) => {
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
@@ -52,6 +55,7 @@ const addComment = (text, id, owner) => {
   videoComments.prepend(newComment);
 };
 
+// Implement comment submit function
 const handleSubmit = async (event) => {
   event.preventDefault();
   const text = form.querySelector("textarea").value;
@@ -75,10 +79,12 @@ const handleSubmit = async (event) => {
   }
 };
 
+// Event listner for comment submission
 if (form) {
   form.addEventListener("submit", handleSubmit);
 }
 
+// Implement comment delettion function
 const handleDelete = async function(e) {
   const confirmation = confirm('Are you sure you want to delete this comment?');
   if (!confirmation) {

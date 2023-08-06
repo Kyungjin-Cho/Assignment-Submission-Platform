@@ -1,17 +1,23 @@
+// Import FFmpeg functions to work with media files
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+
+// DOM Elements for recording controls
 const actionBtn = document.getElementById("actionBtn");
 const video = document.getElementById("preview");
 
+// Variables for media stream, media recorder, and video file
 let stream;
 let recorder;
 let videoFile;
 
+// Definition of input and output file names
 const files = {
   input: "recording.webm",
   output: "output.mp4",
   thumb: "thumbnail.jpg",
 };
 
+// Function to handle file download
 const downloadFile = (fileUrl, fileName) => {
   const a = document.createElement("a");
   a.href = fileUrl;
@@ -20,6 +26,7 @@ const downloadFile = (fileUrl, fileName) => {
   a.click();
 };
 
+// Function to handle transcoding and file downloading
 const handleDownload = async () => {
   actionBtn.removeEventListener("click", handleDownload);
 
@@ -69,6 +76,7 @@ const handleDownload = async () => {
   actionBtn.addEventListener("click", handleStart);
 };
 
+// Function to handle recording start
 const handleStart = () => {
   actionBtn.innerText = "Recording";
   actionBtn.disabled = true;
@@ -90,6 +98,7 @@ const handleStart = () => {
   }, 5000);
 };
 
+// Initialization of video recording and playback
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
